@@ -38,4 +38,3 @@ if __name__ == "__main__":
         print(result.val, end=' ')
         result = result.next
     print()
-    
