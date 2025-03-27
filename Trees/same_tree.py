@@ -19,6 +19,7 @@ class Solution:
 
             if node1.val != node2.val:
                 return False
+            
 
             stack.append([node1.right, node2.right])
             stack.append([node1.left, node2.left])
