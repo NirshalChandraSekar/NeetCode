@@ -6,31 +6,29 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def goodNodes(self, root):
+    def goodNodes(self, root: TreeNode) -> int:
         
         good_nodes = 0
 
         if not root:
             return good_nodes
 
-        
-
-
-        stack = [[root,[]]]
+        stack = [[root, root.val]]
         
         while stack:
-            node, node_list = stack.pop()
-            
-            current_list = node_list + [node.val]
+            root, max_history = stack.pop()
+            # current_list.append(root.val)
 
-            if node.val >= max(current_list):
+            max_val = max(root.val, max_history)
+            
+            if root.val >= max_val:
                 good_nodes += 1
 
-            if node.right:
-                stack.append([node.right, current_list])
+            if root.left:
+                stack.append([root.left, max_val])
 
-            if node.left:
-                stack.append([node.left, current_list])
+            if root.right:
+                stack.append([root.right, max_val])
 
         return good_nodes
             
